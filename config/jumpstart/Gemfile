@@ -1,1 +1,1 @@
-gem 'delayed_job'
+gem 'sidekiq'
