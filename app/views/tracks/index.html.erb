@@ -1,0 +1,51 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h3">Tracks</h1>
+
+    <% if @tracks.any? %>
+      <%= link_to 'New Track', new_track_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @tracks.any? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :name, 'Name', class: 'text-gray-700' %></th>
+            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :location, 'Location', class: 'text-gray-700' %></th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @tracks.each do |track| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= track.name %></td>
+                      <td class="p-3"><%= track.location %></td>
+          
+            <td>
+              <%= link_to "View", track, class: "btn btn-link no-underline" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Track</p>
+        <%= link_to 'New Track', new_track_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

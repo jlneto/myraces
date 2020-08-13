@@ -55,3 +55,12 @@ bin/webpack-dev-server
 # Stripe requires webhooks for SCA payments
 stripe listen --forward-to localhost:5000/webhooks/stripe
 ```
+
+
+# TODO
+
+rails g scaffold Track name location
+rails g model Layout name track:belongs_to difficulty 
+rails g model Strategy name track:belongs_to layout:belongs_to user:belongs_to
+rails g model Point name type coordinates decription strategy:belongs_to type likes:integer dislikes:integer
+

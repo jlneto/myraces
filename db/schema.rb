@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_001403) do
+ActiveRecord::Schema.define(version: 2020_08_13_185939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "active_storage_data", force: :cascade do |t|
+    t.string "key", null: false
+    t.binary "io", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_active_storage_data_on_key"
+  end
+
   create_table "announcements", force: :cascade do |t|
     t.string "kind"
     t.string "title"
@@ -116,6 +124,15 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token"], name: "index_api_tokens_on_token", unique: true
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
+  create_table "layouts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "track_id", null: false
+    t.string "difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["track_id"], name: "index_layouts_on_track_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -171,6 +188,13 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "trial_period_days", default: 0
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_connected_accounts", force: :cascade do |t|
@@ -233,5 +257,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
   add_foreign_key "account_users", "users"
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "layouts", "tracks"
   add_foreign_key "user_connected_accounts", "users"
 end

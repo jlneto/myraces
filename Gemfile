@@ -90,3 +90,6 @@ gem "whenever", require: false
 if File.exist?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
+
+gem 'activestorage-database-service', github: 'TitovDigital/activestorage-database-service'
+gem "haml-rails", "~> 2.0"
