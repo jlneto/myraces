@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_185939) do
+ActiveRecord::Schema.define(version: 2020_08_13_213756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,30 @@ ActiveRecord::Schema.define(version: 2020_08_13_185939) do
     t.integer "trial_period_days", default: 0
   end
 
+  create_table "points", force: :cascade do |t|
+    t.string "name"
+    t.string "tags"
+    t.string "coordinates"
+    t.string "decription"
+    t.bigint "strategy_id", null: false
+    t.string "type"
+    t.integer "likes"
+    t.integer "dislikes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["strategy_id"], name: "index_points_on_strategy_id"
+  end
+
+  create_table "strategies", force: :cascade do |t|
+    t.string "name"
+    t.bigint "layout_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["layout_id"], name: "index_strategies_on_layout_id"
+    t.index ["user_id"], name: "index_strategies_on_user_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -258,5 +282,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_185939) do
   add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "api_tokens", "users"
   add_foreign_key "layouts", "tracks"
+  add_foreign_key "points", "strategies"
+  add_foreign_key "strategies", "layouts"
+  add_foreign_key "strategies", "users"
   add_foreign_key "user_connected_accounts", "users"
 end

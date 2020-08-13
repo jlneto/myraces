@@ -1,0 +1,14 @@
+.container.mx-auto.my-8.px-4
+  %p
+    = form_tag(layout_track_path(id: @track.id), method: :get) do
+      Selecione uma estratégia
+      = hidden_field :layout_id, @layout.id
+      = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name))
+      = submit_tag('ver', class: 'btn btn-primary')
+  %p
+    Ou
+    = link_to 'crie a sua', new_strategy_layout_path(@layout)
+  - if @strategy
+    %hr
+    %h3= @strategy.name
+    = image_tag(url_for(@layout.image), width: '100%')

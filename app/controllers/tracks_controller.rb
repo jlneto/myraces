@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :set_track, only: [:show, :edit, :update, :destroy]
+  before_action :set_track, only: [:show, :edit, :update, :destroy, :new_layout, :layout]
 
   # GET /tracks
   def index
@@ -26,7 +26,6 @@ class TracksController < ApplicationController
   # POST /tracks
   def create
     @track = Track.new(track_params)
-
     if @track.save
       redirect_to @track, notice: "Track was successfully created."
     else
@@ -49,6 +48,21 @@ class TracksController < ApplicationController
     redirect_to tracks_url, notice: "Track was successfully destroyed."
   end
 
+  def new_layout
+    @track.add_layout(params[:name],params[:image])
+    redirect_to @track
+  end
+
+  def layout
+    if params[:strategy_id].present?
+      @strategy = Strategy.find(params[:strategy_id])
+      @layout = @strategy.layout if @strategy
+    else
+      @layout = @track.layouts.find(params[:layout_id])
+      @strategy = @layout.strategies.fisrt
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -58,6 +72,6 @@ class TracksController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def track_params
-    params.require(:track).permit(:name, :location)
+    params.require(:track).permit(:name, :location, :track_id, :layout_id, :strategy_id)
   end
 end

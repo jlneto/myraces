@@ -351,3 +351,5 @@ en:
         name: "Steve Jobs"
         email: "you@example.com"
         password: "password"
+
+  new_layout: New Layout

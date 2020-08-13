@@ -9,4 +9,17 @@
 #  updated_at :datetime         not null
 #
 class Track < ApplicationRecord
+	has_many :layouts
+
+	def add_layout(name,image)
+		layout = self.layouts.find_by_name(name)
+		unless layout
+			layout = self.layouts.new
+			layout.name = name
+		end
+		layout.image.attach(image)
+		layout.save!
+		layout
+	end
+
 end

@@ -20,4 +20,14 @@
 class Layout < ApplicationRecord
   belongs_to :track
   has_one_attached :image
+  has_many :strategies
+
+  def add_strategy(user)
+    strategy_name = "#{self.name}-#{user.email}"
+    strategy =  self.strategies.find_by_name(strategy_name)
+    unless strategy
+      strategy = self.strategies.create!(name: strategy_name, user_id: user.id)
+    end
+    strategy
+  end
 end
