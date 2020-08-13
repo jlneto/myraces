@@ -1,0 +1,14 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: MyRaces
+business_name: McFox Software Design
+domain: mcfox.com.br
+support_email: jose.lopes.santos.neto@gmail.com
+default_from_email: McFox <suporte@mcfox.com.br>
+business_address: |-
+  Rua Dom Paulo Pedrosa 668
+  ap 54
+background_job_processor: delayed_job
+email_provider: ses
+personal_accounts: true
+livereload: false
+register_with_account: false
