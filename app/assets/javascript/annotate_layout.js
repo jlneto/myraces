@@ -20,7 +20,7 @@ function reload_points(img) {
         importPoints(img, notes);
     });
     request.done(function(){
-        alert('Recarregado!');
+        // alert('Recarregado!');
     });
     request.fail(function( jqXHR, textStatus ) {
         alert( "Request failed: " + textStatus );
@@ -55,8 +55,8 @@ function annotate_layout() {
         dragable: false
     });
 
-    var notes = track_image.data("notes");
-    importPoints(img, notes);
+    // var notes = track_image.data("notes");
+    // importPoints(img, notes);
 
     $(document).keypress(function(e) {
         // alert(e.which);
@@ -67,5 +67,7 @@ function annotate_layout() {
         //S
         if (e.which == '115') { savePoints(img); }
     });
+
+    reload_points(img)
 }
 
