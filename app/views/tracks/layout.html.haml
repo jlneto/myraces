@@ -5,13 +5,28 @@
       = hidden_field :layout_id, @layout.id
       = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name))
       = submit_tag('ver', class: 'btn btn-primary')
-  %p
-    Ou
-    = link_to 'crie a sua', new_strategy_layout_path(@layout)
+  - if @can_create_one
+    %p
+      Ou
+      = link_to 'crie a sua', new_strategy_layout_path(@layout)
+  - if @can_edit
+    %p.instructions
+      Voce está editando a estratégia. Use
+      .key V
+      para carregar,
+      .key D
+      para Apagar,
+      .key S
+      para Salvar.
+      Defina os pontos no traçado onde sua roda Dianteira deve passar.
+      Se o ponto for do lado direito, sua roda direita deve passar nesse ponto.
+      Se o ponto for do lado esquerdo, sua roda esquerda deve passar nesse ponto.
+
+
   - if @strategy
     %hr
     %h3= @strategy.name
-    = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json })
+    = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json, edit: @can_edit })
 
 :javascript
   $(document).on("turbolinks:load",function(){
@@ -38,9 +53,12 @@
     }
 
     var track_image = $("#track");
+    var edit = (track_image.data("edit") == true);
+    // alert(track_image.data("edit"));
+    // alert(edit);
 
     var img = track_image.imgNotes({
-      canEdit: true,
+      canEdit: edit,
       zoomable: false,
       dragable: false
     });

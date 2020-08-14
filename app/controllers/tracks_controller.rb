@@ -62,6 +62,8 @@ class TracksController < ApplicationController
       @strategy = @layout.strategies.first
     end
     @image_notes = @strategy.image_notes
+    @can_edit = current_user.id == @strategy.user_id
+    @can_create_one = !@layout.strategies.where(user_id: current_user.id).exists?
   end
 
   def save_points
