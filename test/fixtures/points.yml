@@ -4,12 +4,9 @@
 #
 #  id          :bigint           not null, primary key
 #  coordinates :string
-#  decription  :string
-#  dislikes    :integer
-#  likes       :integer
+#  description :string
 #  name        :string
 #  tags        :string
-#  type        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  strategy_id :bigint           not null

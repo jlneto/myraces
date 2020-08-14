@@ -16,8 +16,6 @@
 :javascript
   $(document).on("turbolinks:load",function(){
 
-    var track_image = $("#track");
-
     function importPoints(img, points) {
       img.imgNotes("clear");
       img.imgNotes("import", points);
@@ -29,7 +27,6 @@
       importPoints(img, points)
     }
 
-
     function savePoints(img, strategy) {
       var notes = img.imgNotes("export")
       var url = "/layouts/save_points?strategy=" + strategy;
@@ -40,8 +37,7 @@
         });
     }
 
-    var notes = track_image.data("notes");
-    var strategy = track_image.data("strategy");
+    var track_image = $("#track");
 
     var img = track_image.imgNotes({
       canEdit: true,
@@ -49,8 +45,10 @@
       dragable: false
     });
 
+    var notes = track_image.data("notes");
     importPoints(img, notes);
 
+    var strategy = track_image.data("strategy");
     $(document).keypress(function(e) {
       // alert(e.which);
       //D

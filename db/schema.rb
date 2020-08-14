@@ -191,14 +191,11 @@ ActiveRecord::Schema.define(version: 2020_08_13_213756) do
   end
 
   create_table "points", force: :cascade do |t|
+    t.bigint "strategy_id", null: false
+    t.string "coordinates"
+    t.string "description"
     t.string "name"
     t.string "tags"
-    t.string "coordinates"
-    t.string "decription"
-    t.bigint "strategy_id", null: false
-    t.string "type"
-    t.integer "likes"
-    t.integer "dislikes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["strategy_id"], name: "index_points_on_strategy_id"
