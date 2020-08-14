@@ -59,8 +59,14 @@ class TracksController < ApplicationController
       @layout = @strategy.layout if @strategy
     else
       @layout = @track.layouts.find(params[:layout_id])
-      @strategy = @layout.strategies.fisrt
+      @strategy = @layout.strategies.first
     end
+    @image_notes = @strategy.image_notes
+  end
+
+  def save_points
+    @strategy = Strategy.find(params[:strategy])
+    @strategy.save_points([:points])
   end
 
   private

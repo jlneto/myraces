@@ -22,5 +22,15 @@
 class Strategy < ApplicationRecord
   belongs_to :layout
   belongs_to :user
+  has_many :points
+
+  def image_notes
+    ret = []
+    self.points.each do |point|
+      coords = point.coordinates.split(',')
+      ret << { x: coords[0], y: coords[1], note: point.description }
+    end
+    ret
+  end
 
 end

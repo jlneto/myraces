@@ -11,4 +11,54 @@
   - if @strategy
     %hr
     %h3= @strategy.name
-    = image_tag(url_for(@layout.image), width: '100%')
+    = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json })
+
+:javascript
+  $(document).on("turbolinks:load",function(){
+
+    var track_image = $("#track");
+
+    function importPoints(img, points) {
+      img.imgNotes("clear");
+      img.imgNotes("import", points);
+    }
+
+    function removeLastPoint(img) {
+      var points = img.imgNotes("export")
+      points.pop();
+      importPoints(img, points)
+    }
+
+
+    function savePoints(img, strategy) {
+      var notes = img.imgNotes("export")
+      var url = "/layouts/save_points?strategy=" + strategy;
+      $.ajax({
+        method: "POST",
+        url: url,
+        data: { strategy: strategy, notes: notes }
+        });
+    }
+
+    var notes = track_image.data("notes");
+    var strategy = track_image.data("strategy");
+
+    var img = track_image.imgNotes({
+      canEdit: true,
+      zoomable: false,
+      dragable: false
+    });
+
+    importPoints(img, notes);
+
+    $(document).keypress(function(e) {
+      // alert(e.which);
+      //D
+      if (e.which == '100') { removeLastPoint(img); }
+      //V
+      if (e.which == '118') { importPoints(img, notes); }
+      //S
+      if (e.which == '115') { savePoints(img, strategy); }
+    });
+
+  });

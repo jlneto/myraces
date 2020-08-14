@@ -10,10 +10,12 @@ class LayoutsController < ApplicationController
     redirect_to layout_track_path(id: @track.id, layout_id:  @layout.id, strategy_id: @strategy.id)
   end
 
-  def new_point
-    @strategy = Strategy.find(params[:strategy_id])
+  def save_points
+    @strategy = Strategy.find(params['strategy'])
+    @strategy.save_points(params['notes'])
+  rescue => e
+    puts e.message
   end
-
 
   private
 

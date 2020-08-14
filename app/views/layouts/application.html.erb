@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%# All assets are defined in Webpacker app/javascripts now %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -22,7 +23,7 @@
     <%= render "shared/payments_dependencies" %>
 
     <%# Replace this with your FontAwesome Pro Kit code %>
-    <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
+<!--    <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>-->
 
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
