@@ -49,7 +49,7 @@ class TracksController < ApplicationController
   end
 
   def new_layout
-    @track.add_layout(params[:name],params[:image])
+    @track.add_layout(params[:name],params[:images])
     redirect_to @track
   end
 
@@ -61,8 +61,10 @@ class TracksController < ApplicationController
       @layout = @track.layouts.find(params[:layout_id])
       @strategy = @layout.strategies.first
     end
-    @image_notes = @strategy.image_notes
-    @can_edit = current_user.id == @strategy.user_id
+    if @strategy
+      @image_notes = @strategy.image_notes
+      @can_edit = current_user.id == @strategy.user_id
+    end
     @can_create_one = !@layout.strategies.where(user_id: current_user.id).exists?
   end
 

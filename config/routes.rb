@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :layouts do
     get :new_strategy, on: :member
 		get :show_strategy, on: :member
+		get :load_points, on: :collection
     post :save_points, on: :collection
 	end
 
@@ -108,7 +109,7 @@ Rails.application.routes.draw do
   match "/500", via: :all, to: "errors#internal_server_error"
 
   authenticated :user do
-    root to: "dashboard#show", as: :user_root
+    root to: "tracks#index", as: :user_root
   end
 
   # Public marketing homepage

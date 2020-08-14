@@ -11,8 +11,19 @@ class LayoutsController < ApplicationController
   end
 
   def save_points
+    raise 'Informe a estrategia' unless params['strategy'].present?
     @strategy = Strategy.find(params['strategy'])
     @strategy.save_points(params['notes'])
+    render :json => @strategy.points.all
+  rescue => e
+    puts e.message
+  end
+
+  def load_points
+    raise 'Informe a estrategia' unless params['strategy'].present?
+    @strategy = Strategy.find(params['strategy'])
+    notes = @strategy.image_notes
+    render :json => notes
   rescue => e
     puts e.message
   end

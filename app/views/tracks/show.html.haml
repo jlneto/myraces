@@ -13,21 +13,27 @@
         %h5 Location
         = @track.location
       %h2= t('.layouts')
-      .layouts_grid
-        - @track.layouts.each do |layout|
-          = link_to layout_track_path(id: @track.id, layout_id: layout.id) do
-            = image_tag(url_for(layout.image), width: '150px')
-      %hr
+      - col = 1
+      %table.layout_grid
+        %tr
+        - @track.layouts.order(:name).each do |layout|
+          %td.layout_image
+            = link_to layout_track_path(id: @track.id, layout_id: layout.id) do
+              = image_tag(url_for(layout.image), class: 'layouts_image')
+              .rounded-full.py-1.px-4.bg-secondary-500.text-xs.inline-block.text-white.font-bold.leading-normal= layout.strategies.count
+          - col += 1
+          - if col > 4
+            %tr
+            - col = 1
+      %br
+      %br
       %br
       %h4= t(:add_new_layout)
       %br
       = form_tag new_layout_track_path(@track), multipart: true do
         %p
-          %label= t(:name)
-          = text_field_tag(:name)
-        %p
           %label= t(:image)
-          = file_field_tag(:image)
+          = file_field_tag('images[]', multiple: true)
         %p
           %br
           = submit_tag t(:new_layout), class: 'btn'

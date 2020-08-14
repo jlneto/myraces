@@ -15,9 +15,22 @@
  *= require_self
  */
 
-.layouts_grid {
+.one_line_form {
     display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.layout_grid {
     margin-bottom: 10px;
+}
+
+.layout_grid td {
+    padding: 10px;
+}
+
+.layouts_image {
+    min-width: 150px;
+    width: 150px;
 }
 
 .instructions {

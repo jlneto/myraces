@@ -5,3 +5,4 @@
 //= require jquery.mousewheel.min
 //= require imgViewer
 //= require imgNotes
+//= require annotate_layout.js

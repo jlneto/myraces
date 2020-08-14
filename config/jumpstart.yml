@@ -7,7 +7,7 @@ default_from_email: McFox <suporte@mcfox.com.br>
 business_address: |-
   Rua Dom Paulo Pedrosa 668
   ap 54
-background_job_processor: sidekiq
+background_job_processor: async
 email_provider: ses
 personal_accounts: true
 livereload: false

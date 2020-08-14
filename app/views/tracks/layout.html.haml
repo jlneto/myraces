@@ -1,85 +1,33 @@
 .container.mx-auto.my-4.px-4
-  %p.instructions
-    = form_tag(layout_track_path(id: @track.id), method: :get) do
-      Selecione uma estratégia
-      .layouts_grid
-        = hidden_field :layout_id, @layout.id
-        = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name), style: 'width:auto')
-        &nbsp;
-        = submit_tag('ver', class: 'btn btn-small btn-primary')
-      ou
-      = link_to 'voltar', track_path(@track)
+  - if @layout.strategies.count > 1
+    %p.instructions
+      = form_tag(layout_track_path(id: @track.id), method: :get) do
+        Selecione uma estratégia
+        .one_line_form
+          = hidden_field :layout_id, @layout.id
+          = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name), style: 'width:auto')
+          &nbsp;
+          = submit_tag('ver', class: 'btn btn-small btn-primary')
+        ou
+  = link_to 'voltar', track_path(@track)
+  %br
+  %br
   - if @can_create_one
     %p.instructions
-      Ou
-      = link_to 'crie a sua', new_strategy_layout_path(@layout)
-  - if @can_edit
-    %p.instructions
-      Voce está editando a estratégia. Use
-      %span.key V
-      para carregar,
-      %span.key D
-      para Apagar,
-      %span.key S
-      para Salvar.
-      Defina os pontos no traçado onde sua roda Dianteira deve passar.
-    %p.instructions
-      Se o ponto for do lado direito, sua roda direita deve passar nesse ponto.
-      Se o ponto for do lado esquerdo, sua roda esquerda deve passar nesse ponto.
-
+      = link_to 'Colabore e crie a sua estratégia', new_strategy_layout_path(@layout), class: 'btn btn-primary'
 
   - if @strategy
-    %hr
-    %h3= @strategy.name
+    = render :partial => 'instructions'
+    %br
+    %h3
+      = @strategy.name
+      ( Id:
+      = @strategy.id
+      )
+    = render :partial => 'edit_instructions'
     = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json, edit: @can_edit })
 
 :javascript
-  $(document).on("turbolinks:load",function(){
-
-    function importPoints(img, points) {
-      img.imgNotes("clear");
-      img.imgNotes("import", points);
-    }
-
-    function removeLastPoint(img) {
-      var points = img.imgNotes("export")
-      points.pop();
-      importPoints(img, points)
-    }
-
-    function savePoints(img, strategy) {
-      var notes = img.imgNotes("export")
-      var url = "/layouts/save_points?strategy=" + strategy;
-      $.ajax({
-        method: "POST",
-        url: url,
-        data: { strategy: strategy, notes: notes }
-        });
-    }
-
-    var track_image = $("#track");
-    var edit = (track_image.data("edit") == true);
-    // alert(track_image.data("edit"));
-    // alert(edit);
-
-    var img = track_image.imgNotes({
-      canEdit: edit,
-      zoomable: false,
-      dragable: false
-    });
-
-    var notes = track_image.data("notes");
-    importPoints(img, notes);
-
-    var strategy = track_image.data("strategy");
-    $(document).keypress(function(e) {
-      // alert(e.which);
-      //D
-      if (e.which == '100') { removeLastPoint(img); }
-      //V
-      if (e.which == '118') { importPoints(img, notes); }
-      //S
-      if (e.which == '115') { savePoints(img, strategy); }
-    });
-
-  });
+  document.addEventListener("turbolinks:load", function() {
+    annotate_layout();
+  })

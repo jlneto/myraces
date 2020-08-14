@@ -21,7 +21,9 @@
         <tbody>
         <% @tracks.each do |track| %>
           <tr class="group border-t border-gray-400 hover:bg-gray-100">
-                      <td class="p-3"><%= track.name %></td>
+                      <td class="p-3">
+                        <%= link_to  track.name, track, class: "btn btn-link no-underline" %>
+                      </td>
                       <td class="p-3"><%= track.location %></td>
           
             <td>
