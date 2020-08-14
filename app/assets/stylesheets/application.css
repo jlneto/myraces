@@ -17,4 +17,23 @@
 
 .layouts_grid {
     display: inline-flex;
+    margin-bottom: 10px;
+}
+
+.instructions {
+    margin-bottom: 10px;
+    vertical-align: center;
+}
+
+.key {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    background-color: lightgray;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 3px;
+    padding: 3px;
 }

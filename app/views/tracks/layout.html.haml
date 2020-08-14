@@ -1,24 +1,29 @@
-.container.mx-auto.my-8.px-4
-  %p
+.container.mx-auto.my-4.px-4
+  %p.instructions
     = form_tag(layout_track_path(id: @track.id), method: :get) do
       Selecione uma estratégia
-      = hidden_field :layout_id, @layout.id
-      = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name))
-      = submit_tag('ver', class: 'btn btn-primary')
+      .layouts_grid
+        = hidden_field :layout_id, @layout.id
+        = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name), style: 'width:auto')
+        &nbsp;
+        = submit_tag('ver', class: 'btn btn-small btn-primary')
+      ou
+      = link_to 'voltar', track_path(@track)
   - if @can_create_one
-    %p
+    %p.instructions
       Ou
       = link_to 'crie a sua', new_strategy_layout_path(@layout)
   - if @can_edit
     %p.instructions
       Voce está editando a estratégia. Use
-      .key V
+      %span.key V
       para carregar,
-      .key D
+      %span.key D
       para Apagar,
-      .key S
+      %span.key S
       para Salvar.
       Defina os pontos no traçado onde sua roda Dianteira deve passar.
+    %p.instructions
       Se o ponto for do lado direito, sua roda direita deve passar nesse ponto.
       Se o ponto for do lado esquerdo, sua roda esquerda deve passar nesse ponto.
 
