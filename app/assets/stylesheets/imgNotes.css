@@ -103,5 +103,5 @@ table.gridtable td {
 }
 
 .marker {
-    background-image: url(marker_black.png);
+    background-image: url("/assets/marker_black.png");
 }
