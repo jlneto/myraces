@@ -16,11 +16,12 @@ function removeLastPoint(img) {
 function reload_points(img) {
     var strategy = $("#track").data("strategy");
     var url = "/layouts/load_points?strategy=" + strategy;
-    var request = $.get( url, function( notes ) {
-        importPoints(img, notes);
+    var notes = []
+    var request = $.get( url, function( data ) {
+        notes = data;
     });
     request.done(function(){
-        // alert('Recarregado!');
+        importPoints(img, notes);
     });
     request.fail(function( jqXHR, textStatus ) {
         alert( "Request failed: " + textStatus );
