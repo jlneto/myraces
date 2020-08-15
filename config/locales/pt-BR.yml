@@ -352,4 +352,10 @@ pt-BR:
         email: "you@example.com"
         password: "password"
 
-  save_layout: "Salvar Traçados"
+  save_layouts: "Salvar Traçados"
+  layouts: "Traçados"
+  layout: "Traçado"
+  tracks: "Pistas"
+  track: "Pista"
+  strategies: "Estratégias"
+  strategy: "Estratégia"
