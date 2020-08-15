@@ -5,14 +5,15 @@
         = link_to 'Tracks', tracks_path
         \>
         = link_to @track.name, track_path(@track)
-        \>
-        = @strategy.name
-        ( StrId:
-        = @strategy.id
-        ,
-        = @strategy.points.count
-        pts
-        )
+        - if @strategy
+          \>
+          = @strategy.name
+          ( StrId:
+          = @strategy.id
+          ,
+          = @strategy.points.count
+          pts
+          )
       - if @editing
         = link_to 'Ver', layout_track_path(@track, strategy_id: @strategy.id), class: "btn btn-link"
       - if @can_edit && !@editing

@@ -7,7 +7,7 @@ class LayoutsController < ApplicationController
 
   def new_strategy
     @strategy = @layout.add_strategy(current_user)
-    redirect_to layout_track_path(id: @track.id, layout_id: @layout.id, strategy_id: @strategy.id)
+    redirect_to layout_track_path(id: @track.id, layout_id: @layout.id, strategy_id: @strategy.id, edit: true)
   end
 
   def save_points
