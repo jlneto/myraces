@@ -1,4 +1,4 @@
-class LayoutsController < ApplicationController
+class StrategiesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_layout, only: [:new_strategy, :show_strategy, :new_point]
@@ -9,7 +9,7 @@ class LayoutsController < ApplicationController
 
   def new_strategy
     @strategy = @layout.add_strategy(current_user)
-    redirect_to layout_track_path(id: @track.id, layout_id: @layout.id, strategy_id: @strategy.id, edit: true)
+    redirect_to show_layout_track_path(id: @track.id, layout_id: @layout.id, strategy_id: @strategy.id, edit: true)
   end
 
   def save_points

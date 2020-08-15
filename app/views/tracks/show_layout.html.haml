@@ -15,14 +15,15 @@
           pts
           )
       - if @editing
-        = link_to 'Ver', layout_track_path(@track, strategy_id: @strategy.id), class: "btn btn-link"
+        = link_to 'Ver', show_layout_track_path(@track, strategy_id: @strategy.id), class: "btn btn-link"
+        = link_to 'Excluir', destroy_strategy_track_path(@track, strategy_id: @strategy.id), class: "btn btn-link"
       - if @can_edit && !@editing
-        = link_to 'Editar', layout_track_path(@track, strategy_id: @strategy.id, edit: true), class: "btn btn-link"
+        = link_to 'Editar', show_layout_track_path(@track, strategy_id: @strategy.id, edit: true), class: "btn btn-link"
 
     .bg-white.rounded.shadow.p-8
       - if @layout.strategies.count > 1
         %p.instructions
-          = form_tag(layout_track_path(id: @track.id), method: :get) do
+          = form_tag(show_layout_track_path(id: @track.id), method: :get) do
             Selecione uma estratégia
             .one_line_form
               = hidden_field :layout_id, @layout.id
@@ -32,15 +33,10 @@
         %br
       - if @can_create_one
         %p.instructions
-          = link_to 'Colabore e crie a sua estratégia', new_strategy_layout_path(@layout), class: 'btn btn-primary'
+          = link_to 'Colabore e crie a sua estratégia', new_strategy_strategy_path(@layout), class: 'btn btn-primary'
 
       - if @strategy
         = render :partial => 'instructions'
         - if @editing
           = render :partial => 'edit_instructions'
-        = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, edit: @editing })
-
-:javascript
-  document.addEventListener("turbolinks:load", function() {
-    annotate_layout("#track");
-  })
+        = image_tag(url_for(@layout.image), width: '100%', id: 'track', data: { strategy: @strategy.id, edit: @editing })

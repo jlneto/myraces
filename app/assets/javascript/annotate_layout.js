@@ -15,7 +15,7 @@ function removeLastPoint(img) {
 
 function reload_points(img) {
     var strategy = $("#track").data("strategy");
-    var url = "/layouts/load_points?strategy=" + strategy;
+    var url = "/strategies/load_points?strategy=" + strategy;
     var notes = []
     var request = $.get( url, function( data ) {
         notes = data;
@@ -40,7 +40,7 @@ function load_points(image_id){
 function savePoints(img) {
     var strategy = $("#track").data("strategy");
     var notes = img.imgNotes("export")
-    var url = "/layouts/save_points?strategy=" + strategy;
+    var url = "/strategies/save_points?strategy=" + strategy;
     var request = $.ajax({
         method: "POST",
         url: url,
@@ -63,9 +63,6 @@ function annotate_layout(image_id) {
         dragable: false
     });
 
-    // var notes = track_image.data("notes");
-    // importPoints(img, notes);
-
     $(document).keypress(function(e) {
         // alert(e.which);
         //D
@@ -75,6 +72,11 @@ function annotate_layout(image_id) {
         //S
         if (e.which == '115' && edit) { savePoints(img); }
     });
-    setTimeout(reload_points(img), 1000);
+    reload_points(img)
 }
 
+document.addEventListener("turbolinks:load", function() {
+    if ($("#track").length) {
+        annotate_layout("#track");
+    }
+});

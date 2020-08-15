@@ -2,11 +2,12 @@
 Rails.application.routes.draw do
   resources :tracks do
     post :new_layout, on: :member
-    get :layout, on: :member
+    get :show_layout, on: :member
+    get :destroy_strategy, on: :member
     post :save_points, on: :member
   end
 
-  resources :layouts do
+  resources :strategies do
     get :new_strategy, on: :member
     get :show_strategy, on: :member
     get :load_points, on: :collection
