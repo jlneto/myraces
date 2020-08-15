@@ -21,21 +21,13 @@
 #
 
 one:
-  name: MyString
-  type: 
-  coordinates: MyString
-  decription: MyString
+  name: p1
+  coordinates: 0,0
+  description: noet
   strategy: one
-  type: 
-  likes: 1
-  dislikes: 1
 
 two:
   name: MyString
-  type: 
   coordinates: MyString
-  decription: MyString
+  description: MyString
   strategy: two
-  type: 
-  likes: 1
-  dislikes: 1

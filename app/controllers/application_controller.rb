@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   include CurrentHelper
   include Sortable
 
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
 

@@ -1,4 +1,6 @@
 class LayoutsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_layout, only: [:new_strategy, :show_strategy, :new_point]
 
   def show_strategy

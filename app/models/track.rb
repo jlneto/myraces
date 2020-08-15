@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Track < ApplicationRecord
-  has_many :layouts
+  has_many :layouts, dependent: :destroy
 
   def add_layout(name, images)
     images.each do |image|

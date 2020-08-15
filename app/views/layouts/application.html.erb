@@ -11,9 +11,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%- if current_page?(action: 'layout') %>
-      <meta name="turbolinks-visit-control" content="reload">
-    <% end %>
+    <meta name="turbolinks-visit-control" content="reload">
     <%# All assets are defined in Webpacker app/javascripts now %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

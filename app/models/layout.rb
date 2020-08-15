@@ -20,7 +20,7 @@
 class Layout < ApplicationRecord
   belongs_to :track
   has_one_attached :image
-  has_many :strategies
+  has_many :strategies, dependent: :destroy
 
   def add_strategy(user)
     strategy_name = "#{name}-#{user.email}"

@@ -2,7 +2,11 @@ require "test_helper"
 
 class TracksControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @account = accounts(:company)
+    @admin = users(:one)
+    @regular_user = users(:two)
     @track = tracks(:one)
+    sign_in @admin
   end
 
   test "should get index" do

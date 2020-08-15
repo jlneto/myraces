@@ -1,0 +1,12 @@
+- col = 1
+%table.layout_grid
+  %tr
+  - @track.layouts.order(:name).each do |layout|
+    %td.layout_image
+      = link_to layout_track_path(id: @track.id, layout_id: layout.id) do
+        = image_tag(layout.image, class: 'layouts_image') if layout.image.attached?
+        .rounded-full.py-1.px-4.bg-secondary-500.text-xs.inline-block.text-white.font-bold.leading-normal= layout.strategies.count
+    - col += 1
+    - if col > 4
+      %tr
+      - col = 1

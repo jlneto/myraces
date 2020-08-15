@@ -22,7 +22,7 @@
 class Strategy < ApplicationRecord
   belongs_to :layout
   belongs_to :user
-  has_many :points
+  has_many :points, dependent: :destroy
 
   def image_notes
     ret = []

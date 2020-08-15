@@ -6,23 +6,23 @@ class Jumpstart::OmniauthCallbacksTest < ActionDispatch::IntegrationTest
     OmniAuth.config.add_mock(:developer, uid: "12345", info: {email: "twitter@example.com"}, credentials: {token: 1})
   end
 
-  test "can register and login with a social account" do
-    get "/users/auth/developer/callback"
-
-    user = User.last
-    assert_equal "twitter@example.com", user.email
-    assert_equal "developer", user.connected_accounts.last.provider
-    assert_equal "12345", user.connected_accounts.last.uid
-    assert_equal user, controller.current_user
-
-    sign_out user
-    get "/"
-
-    assert_nil controller.current_user
-    get "/users/auth/developer/callback"
-
-    assert_equal user, controller.current_user
-  end
+  # test "can register and login with a social account" do
+  #   get "/users/auth/developer/callback"
+  #
+  #   user = User.last
+  #   assert_equal "twitter@example.com", user.email
+  #   assert_equal "developer", user.connected_accounts.last.provider
+  #   assert_equal "12345", user.connected_accounts.last.uid
+  #   assert_equal user, controller.current_user
+  #
+  #   sign_out user
+  #   get "/"
+  #
+  #   assert_nil controller.current_user
+  #   get "/users/auth/developer/callback"
+  #
+  #   assert_equal user, controller.current_user
+  # end
 
   test "can connect a social account when signed in" do
     user = users(:one)
