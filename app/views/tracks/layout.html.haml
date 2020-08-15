@@ -21,8 +21,11 @@
     %br
     %h3
       = @strategy.name
-      ( Id:
+      ( StrId:
       = @strategy.id
+      ,
+      = @strategy.points.count
+      pts
       )
     = render :partial => 'edit_instructions'
     = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json, edit: @can_edit })
