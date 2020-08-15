@@ -22,11 +22,18 @@ function reload_points(img) {
     });
     request.done(function(){
         importPoints(img, notes);
+        // alert( "ok" );
     });
     request.fail(function( jqXHR, textStatus ) {
         alert( "Request failed: " + textStatus );
     });
 
+}
+
+function load_points(image_id){
+    var track_image = $(image_id);
+    var img = track_image.imgNotes();
+    reload_points(img);
 }
 
 
@@ -47,8 +54,8 @@ function savePoints(img) {
     });
 }
 
-function annotate_layout() {
-    var track_image = $("#track");
+function annotate_layout(image_id) {
+    var track_image = $(image_id);
     var edit = (track_image.data("edit") == true);
     var img = track_image.imgNotes({
         canEdit: edit,
@@ -68,7 +75,6 @@ function annotate_layout() {
         //S
         if (e.which == '115' && edit) { savePoints(img); }
     });
-
-    reload_points(img)
+    setTimeout(reload_points(img), 1000);
 }
 
