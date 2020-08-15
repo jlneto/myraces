@@ -17,7 +17,7 @@
 #
 #  fk_rails_...  (track_id => tracks.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class LayoutTest < ActiveSupport::TestCase
   # test "the truth" do

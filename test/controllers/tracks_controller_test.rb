@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class TracksControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class TracksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create track" do
-    assert_difference('Track.count') do
-      post tracks_url, params: { track: { location: @track.location, name: @track.name } }
+    assert_difference("Track.count") do
+      post tracks_url, params: {track: {location: @track.location, name: @track.name}}
     end
 
     assert_redirected_to track_url(Track.last)
@@ -34,12 +34,12 @@ class TracksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update track" do
-    patch track_url(@track), params: { track: { location: @track.location, name: @track.name } }
+    patch track_url(@track), params: {track: {location: @track.location, name: @track.name}}
     assert_redirected_to track_url(@track)
   end
 
   test "should destroy track" do
-    assert_difference('Track.count', -1) do
+    assert_difference("Track.count", -1) do
       delete track_url(@track)
     end
 

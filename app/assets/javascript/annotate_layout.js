@@ -61,11 +61,11 @@ function annotate_layout() {
     $(document).keypress(function(e) {
         // alert(e.which);
         //D
-        if (e.which == '100') { removeLastPoint(img); }
+        if (e.which == '100' && edit) { removeLastPoint(img); }
         //V
         if (e.which == '118') { reload_points(img); }
         //S
-        if (e.which == '115') { savePoints(img); }
+        if (e.which == '115' && edit) { savePoints(img); }
     });
 
     reload_points(img)

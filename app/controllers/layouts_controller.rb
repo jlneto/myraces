@@ -7,23 +7,23 @@ class LayoutsController < ApplicationController
 
   def new_strategy
     @strategy = @layout.add_strategy(current_user)
-    redirect_to layout_track_path(id: @track.id, layout_id:  @layout.id, strategy_id: @strategy.id)
+    redirect_to layout_track_path(id: @track.id, layout_id: @layout.id, strategy_id: @strategy.id)
   end
 
   def save_points
-    raise 'Informe a estrategia' unless params['strategy'].present?
-    @strategy = Strategy.find(params['strategy'])
-    @strategy.save_points(params['notes'])
-    render :json => @strategy.points.all
+    raise "Informe a estrategia" unless params["strategy"].present?
+    @strategy = Strategy.find(params["strategy"])
+    @strategy.save_points(params["notes"])
+    render json: @strategy.points.all
   rescue => e
     puts e.message
   end
 
   def load_points
-    raise 'Informe a estrategia' unless params['strategy'].present?
-    @strategy = Strategy.find(params['strategy'])
+    raise "Informe a estrategia" unless params["strategy"].present?
+    @strategy = Strategy.find(params["strategy"])
     notes = @strategy.image_notes
-    render :json => notes
+    render json: notes
   rescue => e
     puts e.message
   end
@@ -35,5 +35,4 @@ class LayoutsController < ApplicationController
     @layout = Layout.find(params[:id])
     @track = @layout.track
   end
-
 end

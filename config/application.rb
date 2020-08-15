@@ -23,11 +23,11 @@ module JumpstartApp
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
 
     # Permitted locales available for the application
-    config.i18n.available_locales = ['pt-BR', 'en']
+    config.i18n.available_locales = ["pt-BR", "en"]
 
     # Set default locale
-    config.i18n.default_locale = 'pt-BR'
-    config.i18n.locale = 'pt-BR'
+    config.i18n.default_locale = "pt-BR"
+    config.i18n.locale = "pt-BR"
 
     # Use default language as fallback if translation is missing
     config.i18n.fallbacks = true

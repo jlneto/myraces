@@ -1,17 +1,17 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   resources :tracks do
-		post :new_layout, on: :member
-		get :layout, on: :member
-		post :save_points, on: :member
-	end
+    post :new_layout, on: :member
+    get :layout, on: :member
+    post :save_points, on: :member
+  end
 
   resources :layouts do
     get :new_strategy, on: :member
-		get :show_strategy, on: :member
-		get :load_points, on: :collection
+    get :show_strategy, on: :member
+    get :load_points, on: :collection
     post :save_points, on: :collection
-	end
+  end
 
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?

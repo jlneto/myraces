@@ -26,25 +26,24 @@ class Strategy < ApplicationRecord
 
   def image_notes
     ret = []
-    self.points.each do |point|
-      coords = point.coordinates.split(',')
-      ret << { x: coords[0], y: coords[1], note: point.description }
+    points.each do |point|
+      coords = point.coordinates.split(",")
+      ret << {x: coords[0], y: coords[1], note: point.description}
     end
     ret
   end
 
   def save_points(image_notes)
-    self.points.destroy_all
+    points.destroy_all
     image_notes.each do |note|
       add_point_from_note(note[1])
     end
   end
 
   def add_point_from_note(note)
-    point = self.points.new
-    point.coordinates = "#{note['x']},#{note['y']}"
-    point.description = note['note']
+    point = points.new
+    point.coordinates = "#{note["x"]},#{note["y"]}"
+    point.description = note["note"]
     point.save!
   end
-
 end

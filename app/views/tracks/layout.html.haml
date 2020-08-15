@@ -1,34 +1,43 @@
 .container.mx-auto.my-4.px-4
-  - if @layout.strategies.count > 1
-    %p.instructions
-      = form_tag(layout_track_path(id: @track.id), method: :get) do
-        Selecione uma estratégia
-        .one_line_form
-          = hidden_field :layout_id, @layout.id
-          = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name, @strategy.id), style: 'width:auto')
-          &nbsp;
-          = submit_tag('ver', class: 'btn btn-small btn-primary')
-        ou
-  = link_to 'voltar', track_path(@track)
-  %br
-  %br
-  - if @can_create_one
-    %p.instructions
-      = link_to 'Colabore e crie a sua estratégia', new_strategy_layout_path(@layout), class: 'btn btn-primary'
+  .max-w-8xl.mx-auto
+    .flex.justify-between.items-center.mb-4
+      %h1.h3
+        = link_to 'Tracks', tracks_path
+        \>
+        = link_to @track.name, track_path(@track)
+        \>
+        = @strategy.name
+        ( StrId:
+        = @strategy.id
+        ,
+        = @strategy.points.count
+        pts
+        )
+      - if @editing
+        = link_to 'Ver', layout_track_path(@track, strategy_id: @strategy.id), class: "btn btn-link"
+      - if @can_edit && !@editing
+        = link_to 'Editar', layout_track_path(@track, strategy_id: @strategy.id, edit: true), class: "btn btn-link"
 
-  - if @strategy
-    = render :partial => 'instructions'
-    %br
-    %h3
-      = @strategy.name
-      ( StrId:
-      = @strategy.id
-      ,
-      = @strategy.points.count
-      pts
-      )
-    = render :partial => 'edit_instructions'
-    = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, notes: @image_notes.to_json, edit: @can_edit })
+    .bg-white.rounded.shadow.p-8
+      - if @layout.strategies.count > 1
+        %p.instructions
+          = form_tag(layout_track_path(id: @track.id), method: :get) do
+            Selecione uma estratégia
+            .one_line_form
+              = hidden_field :layout_id, @layout.id
+              = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name, @strategy.id), style: 'width:auto')
+              &nbsp;
+              = submit_tag('ver', class: 'btn btn-small btn-primary')
+        %br
+      - if @can_create_one
+        %p.instructions
+          = link_to 'Colabore e crie a sua estratégia', new_strategy_layout_path(@layout), class: 'btn btn-primary'
+
+      - if @strategy
+        = render :partial => 'instructions'
+        - if @editing
+          = render :partial => 'edit_instructions'
+        = image_tag(url_for(@layout.image), width: '100%', id: 'track',  data: { strategy: @strategy.id, edit: @editing })
 
 :javascript
   document.addEventListener("turbolinks:load", function() {

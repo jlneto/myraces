@@ -19,7 +19,7 @@
 #
 #  fk_rails_...  (strategy_id => strategies.id)
 #
-require 'test_helper'
+require "test_helper"
 
 class PointTest < ActiveSupport::TestCase
   # test "the truth" do

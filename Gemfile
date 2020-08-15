@@ -91,6 +91,6 @@ if File.exist?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
 
-gem 'activestorage-database-service', github: 'TitovDigital/activestorage-database-service'
+gem "activestorage-database-service", github: "TitovDigital/activestorage-database-service"
 gem "haml-rails", "~> 2.0"
-gem 'simple_form'
+gem "simple_form"
