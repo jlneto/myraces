@@ -5,7 +5,7 @@
         Selecione uma estratégia
         .one_line_form
           = hidden_field :layout_id, @layout.id
-          = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name), style: 'width:auto')
+          = select_tag(:strategy_id, options_from_collection_for_select(@layout.strategies, :id, :name, @strategy.id), style: 'width:auto')
           &nbsp;
           = submit_tag('ver', class: 'btn btn-small btn-primary')
         ou

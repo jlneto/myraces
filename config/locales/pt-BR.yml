@@ -31,15 +31,15 @@
 #
 # https://mikerogers.io/2016/01/10/i18n-rails-internationalisation-i18n-cheatsheet.html
 
-en:
-  hello: "Hello world"
+pt-BR:
+  hello: "Alo mundo!"
 
-  something_went_wrong: "Something went wrong"
-  create_an_account_first: "Please create an account first."
-  must_be_an_admin: "You must be an admin to do that."
-  are_you_sure: "Are you sure?"
-  delete: "Delete"
-  back: "Back"
+  something_went_wrong: "Algo deu errado"
+  create_an_account_first: "Por favor, crie uma conta primeiro."
+  must_be_an_admin: "Você precisa ser administrador para executar essa ação."
+  are_you_sure: "Tem certeza?"
+  delete: "Excluir"
+  back: "Voltar"
 
   account_invitations_mailer:
     invite:
@@ -286,10 +286,10 @@ en:
 
   users:
     avatar:
-      upload: "Upload Avatar"
+      upload: "Carregue seu Avatar"
     connected_accounts:
       index:
-        title: "Connected Accounts"
+        title: "Contas conectadas"
         description: "Connecting your social media accounts makes logging in easier."
         remove: "Remove"
         redirecting: "Redirecting..."
@@ -332,24 +332,24 @@ en:
         account_user:
           attributes:
             admin:
-              cannot_be_removed: "role cannot be removed for the account owner"
+              cannot_be_removed: "Papelo não pode ser removido da conta do proprietário"
 
   helpers:
     placeholder:
       account_invitation:
-        name: "Full name"
+        name: "Nome completo"
         email: "example@domain.com"
       account:
-        name: "Account Name"
+        name: "Nome da Conta"
         domain: "example.com"
         subdomain: "example"
-        name_on_card: "Full Name"
-        extra_billing_info: "VAT ID, Business name, address, etc..."
+        name_on_card: "Nome como está no Cartão"
+        extra_billing_info: "CPF, CNPJ, Razão Social, endereço, etc..."
       api_token:
-        name: "Token Name"
+        name: "Nome desse Token"
       user:
         name: "Steve Jobs"
         email: "you@example.com"
         password: "password"
 
-  save_layouts: Save Layouts
+  save_layout: "Salvar Traçados"

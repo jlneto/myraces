@@ -28,12 +28,13 @@
       %br
       %br
       %br
-      %h4= t(:add_new_layout)
-      %br
-      = form_tag new_layout_track_path(@track), multipart: true do
-        %p
-          %label= t(:image)
-          = file_field_tag('images[]', multiple: true)
-        %p
-          %br
-          = submit_tag t(:new_layout), class: 'btn'
+      - if current_user.admin
+        %h4= t(:add_new_layout)
+        %br
+        = form_tag new_layout_track_path(@track), multipart: true do
+          %p
+            %label= t(:images)
+            = file_field_tag('images[]', multiple: true)
+          %p
+            %br
+            = submit_tag t(:save_layouts), class: 'btn btn-primary'
