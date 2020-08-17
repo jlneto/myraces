@@ -27,7 +27,10 @@
                       <td class="p-3"><%= track.location %></td>
           
             <td>
-              <%= link_to "View", track, class: "btn btn-link no-underline" %>
+              <%= link_to "Visualizar", track, class: "btn btn-link no-underline" %>
+              <%- if current_user.admin %>
+                <%= link_to 'Excluir', track_path(track), method: :delete, data: { confirm: t("are_you_sure") }, class: 'btn btn-link' %>
+              <% end %>
             </td>
           </tr>
         <% end %>

@@ -4,3 +4,5 @@
       = link_to show_layout_track_path(id: @track.id, layout_id: layout.id) do
         = image_tag(layout.image, class: 'layouts_image') if layout.image.attached?
         .rounded-full.py-1.px-4.bg-secondary-500.text-xs.inline-block.text-white.font-bold.leading-normal= layout.strategies.count
+        - if current_user.admin
+          = link_to 'x', delete_layout_track_path(layout_id: layout.id), method: :delete, data: { confirm: t("are_you_sure") }, class: 'btn btn-link'

@@ -3,7 +3,7 @@ class TracksController < ApplicationController
   respond_to :html
 
   before_action :authenticate_user!
-  before_action :set_track, only: [:show, :edit, :update, :destroy, :new_layout, :show_layout, :destroy_strategy]
+  before_action :set_track, only: [:show, :edit, :update, :destroy, :new_layout, :show_layout, :delete_layout, :destroy_strategy]
 
   # GET /tracks
   def index
@@ -73,6 +73,12 @@ class TracksController < ApplicationController
     end
     @can_create_one = !@layout.strategies.where(user_id: current_user.id).exists?
     puts '********* Controller Show_layout ***********'
+  end
+
+  def delete_layout
+    @layout = @track.layouts.find(params[:layout_id])
+    @layout.destroy
+    redirect_to @track
   end
 
   def destroy_strategy
