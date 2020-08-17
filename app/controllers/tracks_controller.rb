@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
 
+  respond_to :html
+
   before_action :authenticate_user!
   before_action :set_track, only: [:show, :edit, :update, :destroy, :new_layout, :show_layout, :destroy_strategy]
 
@@ -14,6 +16,7 @@ class TracksController < ApplicationController
 
   # GET /tracks/1
   def show
+    puts 'Show'
   end
 
   # GET /tracks/new
@@ -69,12 +72,7 @@ class TracksController < ApplicationController
       @editing = params[:edit] && @can_edit
     end
     @can_create_one = !@layout.strategies.where(user_id: current_user.id).exists?
-    puts 'Controller Show_layout'
-  end
-
-  def save_points
-    @strategy = Strategy.find(params[:strategy])
-    @strategy.save_points([:points])
+    puts '********* Controller Show_layout ***********'
   end
 
   def destroy_strategy

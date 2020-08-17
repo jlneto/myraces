@@ -1,4 +1,5 @@
 class StrategiesController < ApplicationController
+  respond_to :html
 
   before_action :authenticate_user!
   before_action :set_layout, only: [:new_strategy, :show_strategy, :new_point]

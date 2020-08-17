@@ -75,7 +75,14 @@ function annotate_layout(image_id) {
     reload_points(img)
 }
 
-document.addEventListener("turbolinks:load", function() {
+// Turbolinks firing action twice, one for xhr ohter for document
+// document.addEventListener("turbolinks:load", function() {
+//     if ($("#track").length) {
+//         annotate_layout("#track");
+//     }
+// });
+
+$(document).ready(function() {
     if ($("#track").length) {
         annotate_layout("#track");
     }

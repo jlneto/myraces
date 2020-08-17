@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     post :new_layout, on: :member
     get :show_layout, on: :member
     get :destroy_strategy, on: :member
-    post :save_points, on: :member
   end
 
   resources :strategies do
