@@ -1,5 +1,4 @@
 class TracksController < ApplicationController
-
   respond_to :html
 
   before_action :authenticate_user!
@@ -16,7 +15,7 @@ class TracksController < ApplicationController
 
   # GET /tracks/1
   def show
-    puts 'Show'
+    puts "Show"
   end
 
   # GET /tracks/new
@@ -72,7 +71,7 @@ class TracksController < ApplicationController
       @editing = params[:edit] && @can_edit
     end
     @can_create_one = !@layout.strategies.where(user_id: current_user.id).exists?
-    puts '********* Controller Show_layout ***********'
+    puts "********* Controller Show_layout ***********"
   end
 
   def delete_layout
@@ -83,7 +82,7 @@ class TracksController < ApplicationController
 
   def destroy_strategy
     @strategy = Strategy.find(params[:strategy_id])
-    @strategy.destroy if @strategy
+    @strategy&.destroy
     redirect_to root_path, notice: "Estratégia foi removida."
   rescue => e
     flash[:error] = e.message

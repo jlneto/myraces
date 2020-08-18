@@ -26,7 +26,7 @@ module JumpstartApp
     config.i18n.available_locales = ["pt-BR", "en"]
 
     # Set default locale
-      config.i18n.default_locale = "en"
+    config.i18n.default_locale = "en"
     config.i18n.locale = "en"
 
     # Use default language as fallback if translation is missing

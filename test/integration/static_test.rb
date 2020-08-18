@@ -1,7 +1,6 @@
 require "test_helper"
 
 class Jumpstart::StaticTest < ActionDispatch::IntegrationTest
-
   setup do
     @account = accounts(:company)
     @admin = users(:one)
