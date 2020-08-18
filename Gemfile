@@ -94,3 +94,5 @@ end
 gem "activestorage-database-service", github: "TitovDigital/activestorage-database-service"
 gem "haml-rails", "~> 2.0"
 gem "simple_form"
+gem "rack", ">= 2.2.3"
+gem "actionpack", ">= 6.0.3.2"
