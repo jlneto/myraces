@@ -14,7 +14,7 @@ gem "sass-rails", "~> 6.0"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.1"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem "turbolinks", "~> 5"
+gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 # Use Redis adapter to run Action Cable in production
@@ -79,7 +79,7 @@ gem "pay", "~> 2.1.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
 gem "ruby-oembed", "~> 0.13.0", require: "oembed"
-# gem "turbolinks_render", "~> 0.9.12"
+gem "turbolinks_render", "~> 0.9.12"
 
 # We always want the latest versions of these gems, so no version numbers
 gem "omniauth", github: "omniauth/omniauth"
@@ -94,3 +94,5 @@ end
 gem "activestorage-database-service", github: "TitovDigital/activestorage-database-service"
 gem "haml-rails", "~> 2.0"
 gem "simple_form"
+gem "rack", ">= 2.2.3"
+gem "actionpack", ">= 6.0.3.2"

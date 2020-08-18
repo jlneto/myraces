@@ -424,6 +424,12 @@ GEM
     thread_safe (0.3.6-java)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
+    turbolinks_render (0.9.20)
+      rails (>= 5.2.0)
+      turbolinks-source (~> 5.1)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.1)
@@ -470,6 +476,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  actionpack (>= 6.0.3.2)
   activestorage-database-service!
   acts_as_tenant!
   administrate!
@@ -504,6 +511,7 @@ DEPENDENCIES
   pg_search (~> 2.3)
   pry-rails
   puma (~> 4.3)
+  rack (>= 2.2.3)
   rails (~> 6.0.3.2)
   receipts (~> 1.0.0)
   redis (~> 4.0)
@@ -515,6 +523,8 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   standard
   strong_migrations
+  turbolinks (~> 5)
+  turbolinks_render (~> 0.9.12)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
