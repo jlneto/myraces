@@ -9,7 +9,7 @@
 
 // Rails functionality
 window.Rails = require("@rails/ujs")
-// require("turbolinks").start()
+require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("trix")

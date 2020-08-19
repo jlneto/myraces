@@ -15,6 +15,7 @@
     "jquery-ui-dist": "^1.12.1",
     "js-cookie": "^2.2.0",
     "jstz": "^2.0.0",
+    "leaflet": "^1.6.0",
     "local-time": "^2.1.0",
     "purgecss": "^2.1.0",
     "slim-select": "^1.23.1",
