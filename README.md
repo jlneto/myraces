@@ -64,3 +64,6 @@ rails g model Layout name track:belongs_to difficulty
 rails g model Strategy name layout:belongs_to user:belongs_to
 rails g model Point name type coordinates decription strategy:belongs_to type likes:integer dislikes:integer
 
+
+
+https://stackoverflow.com/questions/18388288/how-do-you-add-marker-to-map-using-leaflet-map-onclick-function-event-handl

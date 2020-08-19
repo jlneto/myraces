@@ -2,17 +2,19 @@
   .max-w-3xl.mx-auto
     .flex.justify-between.items-center.mb-4
       %h1.h3
-        = link_to 'Tracks', tracks_path
+        = link_to 'Pistas', tracks_path
         \> #{@track.name}
-      = link_to 'Edit', edit_track_path(@track), class: "btn btn-link"
+      = link_to 'Editar', edit_track_path(@track), class: "btn btn-link"
     .bg-white.rounded.shadow.p-8
       .mb-4
-        %h5 Name
+        %h5 Nome
         = @track.name
       .mb-4
-        %h5 Location
+        %h5 Local
         = @track.location
-      %h2= t('.layouts')
+      %br
+      %h2 Traçados
+      %br
       - if @track.layouts.count > 0
         = render :partial => 'layout_grid'
       = render :partial => 'load_layouts'

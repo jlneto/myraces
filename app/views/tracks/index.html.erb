@@ -1,9 +1,9 @@
 <div class="container mx-auto my-8 px-4">
   <div class="flex justify-between items-center mb-4">
-    <h1 class="h3">Tracks</h1>
+    <h1 class="h3">Pistas</h1>
 
     <% if @tracks.any? %>
-      <%= link_to 'New Track', new_track_path, class: "btn btn-primary" %>
+      <%= link_to 'Nova Pista', new_track_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 
@@ -12,9 +12,12 @@
       <table class="table">
         <thead>
           <tr>
-            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :name, 'Name', class: 'text-gray-700' %></th>
-            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :location, 'Location', class: 'text-gray-700' %></th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :name, 'Nome', class: 'text-gray-700' %></th>
+            <th class="p-3 uppercase text-left text-xs"><%= sortable @tracks, :location, 'Local', class: 'text-gray-700' %></th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Ações</th>
+            <%- if current_user.admin %>
+              <th></th>
+            <% end %>
           </tr>
         </thead>
 
@@ -28,10 +31,12 @@
           
             <td>
               <%= link_to "Visualizar", track, class: "btn btn-link no-underline" %>
-              <%- if current_user.admin %>
-                <%= link_to 'Excluir', track_path(track), method: :delete, data: { confirm: t("are_you_sure") }, class: 'btn btn-link' %>
-              <% end %>
             </td>
+            <%- if current_user.admin %>
+              <td>
+                <%= link_to 'Excluir', track_path(track), method: :delete, data: { confirm: t("are_you_sure") }, class: 'btn btn-link' %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
         </tbody>

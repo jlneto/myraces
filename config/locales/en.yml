@@ -104,8 +104,8 @@ en:
 
   announcements:
     index:
-      title: "What's New"
-      empty_placeholder: "Exciting stuff coming very soon!"
+      title: "Novidades"
+      empty_placeholder: "Novidades em breve!"
 
   api_tokens:
     created: "Successfully created API token"
@@ -190,21 +190,21 @@ en:
     flash:
       confirm_payment: "Confirm your latest payment"
     navbar:
-      signed_in_as_html: "Signed in as <strong>%{user}</strong>"
-      profile: "Profile"
-      password: "Password"
+      signed_in_as_html: "Autenticado como <strong>%{user}</strong>"
+      profile: "Perfil"
+      password: "Senha"
       connected_accounts: "Connected Accounts"
-      billing: "Billing"
+      billing: "Cobranças"
       api_tokens: "API"
-      accounts: "Accounts"
+      accounts: "Contas"
       admin: "Admin"
-      dashboard: "Dashboard"
-      sign_out: "Sign Out"
-      log_in: "Log In"
-      sign_up: "Sign Up"
+      dashboard: "Painel"
+      sign_out: "Sair"
+      log_in: "Entrar"
+      sign_up: "Se Registrar"
     right_nav:
-      pricing: "Pricing"
-      announcements: "What's New"
+      pricing: "Preço"
+      announcements: "Novidades"
 
   subscriptions:
     created: "Thanks for subscribing!"
@@ -292,8 +292,8 @@ en:
         title: "Connected Accounts"
         description: "Connecting your social media accounts makes logging in easier."
         remove: "Remove"
-        redirecting: "Redirecting..."
-        none: "You don't have any connected accounts."
+        redirecting: "Redirecionando..."
+        none: "Você não tem nenhuma conta conectada."
 
   layouts:
     mailer:
@@ -304,17 +304,17 @@ en:
       preferences: "Update subscription preferences"
 
   notifications:
-    invite_accepted: "%{user} accepted your invitation."
-    empty: "Nothing to see here — yet."
-    empty_description: "We'll let you know when you have new notifications."
+    invite_accepted: "%{user} aceitou seu convite."
+    empty: "Nada aqui - por enquanto."
+    empty_description: "Nos o avisaremos quando voe tiver uma nova notificação."
 
   activerecord:
     attributes:
       api_token:
-        last_used_at: "Last Used"
-        created_at: "Created"
+        last_used_at: "Último uso"
+        created_at: "Criado em "
       account:
-        name_on_card: "Name on Card"
+        name_on_card: "Nome no cartão"
 
     errors:
       models:
