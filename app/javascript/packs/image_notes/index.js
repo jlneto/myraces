@@ -1,3 +1,10 @@
+require("jquery-ui-bundle");
+require("hammerjs");
+require("jquery-hammerjs");
+require("imgviewer");
+require("./imgNotes");
+// require("./imgNotes.css");
+
 function importPoints(img, points) {
     img.imgNotes("clear");
     if (Array.isArray(points)) {
@@ -47,7 +54,7 @@ function savePoints(img) {
         data: { strategy: strategy, notes: notes }
     })
     request.done(function(){
-            alert('Salvo!');
+        alert('Salvo!');
     });
     request.fail(function( jqXHR, textStatus ) {
         alert( "Request failed: " + textStatus );
@@ -75,14 +82,7 @@ function annotate_layout(image_id) {
     reload_points(img)
 }
 
-// Turbolinks firing action twice, one for xhr ohter for document
-// document.addEventListener("turbolinks:load", function() {
-//     if ($("#track").length) {
-//         annotate_layout("#track");
-//     }
-// });
-
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", () => {
     if ($("#track").length) {
         annotate_layout("#track");
     }

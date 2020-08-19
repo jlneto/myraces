@@ -11,7 +11,11 @@
     "clipboard": "^2.0.4",
     "core-js": "3",
     "flatpickr": "^4.6.1",
+    "hammerjs": "^2.0.8",
+    "imgviewer": "^1.0.0",
     "jquery": "^3.5.1",
+    "jquery-hammerjs": "^2.0.0",
+    "jquery-ui-bundle": "^1.12.1-migrate",
     "jquery-ui-dist": "^1.12.1",
     "js-cookie": "^2.2.0",
     "jstz": "^2.0.0",
@@ -24,7 +28,8 @@
     "tailwindcss-stimulus-components": "^2.0.0",
     "tippy.js": "^6.0.0",
     "tributejs": "^5.0.0",
-    "trix": "^1.2.0"
+    "trix": "^1.2.0",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"

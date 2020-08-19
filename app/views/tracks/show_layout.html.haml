@@ -40,5 +40,4 @@
         - if @editing
           = render :partial => 'edit_instructions'
         = image_tag(url_for(@layout.image), width: '100%', id: 'track', data: { strategy: @strategy.id, edit: @editing })
-:javascript
-  reload_points($('#track').imgNotes());
+

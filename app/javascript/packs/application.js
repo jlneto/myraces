@@ -9,7 +9,7 @@
 
 // Rails functionality
 window.Rails = require("@rails/ujs")
-// require("turbolinks").start()
+require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("trix")
@@ -30,9 +30,11 @@ import "src/timezone"
 import "src/tooltips"
 
 import LocalTime from "local-time"
-LocalTime.start()
+LocalTime.start();
 
 // ADD YOUR JAVACSRIPT HERE
+require("packs/image_notes")
 
 // Start Rails UJS
 Rails.start()
+
